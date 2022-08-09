@@ -44,41 +44,48 @@ do so.
 You can verify you have a good build by running the container interactively:
 
 ```
-docker run -it \
-  --env-file env-dev.txt \
-  --publish 5000:5001 \
-  --volume "/Users/boyd.hemphill/code/tackle-python-flask-dev-env/:/opt/service" \
-  wine-purse bash 
+docker compose up
 ```
 
-This leaves you sitting as the `root` user as a bash prompt. Try the following 
-to get an idea of how development will work. 
-1. Container: `cd /opt/app`
-1. Container: `cat __init__.py`
-1. Local Code Editor: Add the comment `# I am coding` to the top 
-   of `__init__.py` and save
-1. Container: `cat __init__.py`
+Visit the fancy app [http://127.0.0.1:8000](http://127.0.0.1:8000)
 
-Now you see the file has your addition.  What you are seeing is the ability to
-work on your workstation (laptop) while using a container to run the software
-while changes to the running code are happening in real time.  
+### Tooling Tips
 
-Now see that the environment variables are set. In the container:
+Docker provides an outstanding GUI for developers to leverage. Find the 
+Docker Desktop application. 
 
-`env | grep`
+1. In the left menu, click on the "Containers" icon. 
+   1. You will see a list with your one stack in it.
+   1. Click to expand the stack.  
+1. Click on the Name of the container (not the stack)
+   1. you are looking at the container Logs!
+   1. Reload your browser and see a new request come up
+1. In the upper right are some controls in circles. 
+   1. Click on the CLI control and type.
+      1. This leaves you sitting as the `root` user at a shell prompt. Try 
+         the following to get an idea of how development will work. 
+         1. Container: Type `bash` to get a more familiar and functional shell.
+         1. Container: `cd /opt/app`
+         1. Container: `cat __init__.py`
+         1. Local Code Editor: Add the comment `# I am coding` to the top 
+            of `__init__.py` and save
+         1. Container: `cat __init__.py`
+    1. In the running continer issue the command: `env | grep FLASK`
+       1. You will see the values that are set in the containers environment
+          from the `docker-compose.yml` file.
+ 1. Local Code Editor: Edit app/routes.py and change the string to 
+    "Hello Tackle world"
+    1. Note that when you save the file the logs role to show the server 
+       restarted. This is real time development based on a Flask construct
+       of running with the `FLASK_ENV` set to "development"
+    1. Reload your browser and see that your change took effect. This works 
+       because the code on your workstation is mounted as if in the running
+       container. Changes locally are reflected in the container in real time.
 
-You will see settings from the `env-dev.txt` file.
+Once you are done poking around in the container, exit (container will stop) 
+and continue.
 
-Try some other stuff to satisfy your curiousity about that container. 
-
-Once you are done poking around in the container, exit (container will stop) and continue.
-
-## Hello World
-
-ex
-
-
-# Code, Config and Runtime
+## Building and Testing
 
 
 
