@@ -1,0 +1,9 @@
+flask<2
+flask_login
+flask-mail
+flask-migrate
+flask-sqlalchemy
+flask-wtf
+markupsafe==2.0.1
+pylint
+pyjwt
