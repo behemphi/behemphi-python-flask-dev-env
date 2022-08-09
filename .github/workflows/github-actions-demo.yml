@@ -18,4 +18,4 @@ jobs:
       - name: Install linter
         run: pip3 install pylint
       - name: Linting
-        run: pylint --recursive=y /opt/service
+        run: pylint --recursive=y ${{ github.workspace }}
