@@ -15,5 +15,7 @@ jobs:
         run: |
           ls ${{ github.workspace }}
       - run: echo "🍏 This job's status is ${{ job.status }}."
+      - name: Install linter
+        run: pip3 install pylint
       - name: Linting
         run: pylint --recursive=y /opt/service
