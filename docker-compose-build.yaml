@@ -2,6 +2,7 @@ version: "0.1.0"
 services: 
   web:
     build: .
+    command: pylint --recursive=y /opt/service
     environment:
       - FLASK_APP=microblog.py
       - FLASK_ENV=development
