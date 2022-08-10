@@ -9,8 +9,10 @@ jobs:
       - run: echo "The name of repository is - ${{ github.repository }}."
       - name: Check out repository code
         uses: actions/checkout@v3
-      - name: Install linter
-        run: pip3 install pylint
+      - name: Install dependencies
+        run: pip3 install pylint pytest radon>5.1
       - name: Linting
         run: pylint --recursive=y ${{ github.workspace }}
+      - name: Tests
+        run: pytest /opt/service/app/routes.py
       - run: echo "This job's status is ${{ job.status }}."

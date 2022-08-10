@@ -1,0 +1,17 @@
+#!/bin/sh
+
+# Linting
+# Override the default run command in the container to cause it to
+# simply run the linter instead.
+# Output is in the both in STDOUT & in the Docker Desktop GUI logs
+# for the container
+
+lint=$(docker compose run web pylint --recursive=y /opt/service)
+
+if test -n "$lint"
+then
+    echo >&2 "Correct errors in linting found in Docker Desktop logs, push abandoned."
+    exit 1
+fi
+
+exit 0

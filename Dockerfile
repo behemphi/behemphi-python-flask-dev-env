@@ -11,8 +11,8 @@ run apt-get update --assume-yes && apt-get upgrade --assume-yes \
     && apt-get install --assume-yes \
         net-tools \
         python3-pip \
-		procps \
-	    telnet
+        procps \
+        telnet
 
 # Choosing to run all custom code from /opt as a standard. Helps with debugging
 # and during production troubleshooting in dire cases.

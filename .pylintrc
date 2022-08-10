@@ -1,0 +1,6 @@
+# Based on exampe found at: https://raw.githubusercontent.com/datawire/quark/master/.pylintrc
+
+[FORMAT]
+
+# Maximum number of characters on a single line.
+max-line-length=88

@@ -32,6 +32,13 @@ these days is via Homebrew:
   the terms of service or you'll end up in a bit of a loop trying to trouble-
   shoot
 
+In order to take advantage of some local feedback loops, and keep git hooks
+under source control, run the following command:
+
+`git config --local core.hooksPath .githooks/`
+
+Now git will look for hooks in that directory and the team can share changes
+to them in the usual way we manage code. 
 
 ## Dev Env Config (Tutorial Style)
 
@@ -85,9 +92,58 @@ Docker Desktop application.
 Once you are done poking around in the container, exit (container will stop) 
 and continue.
 
+### VS Code
+
+!!! Note that we have not yet adopted and IDE as a team. This is just notes for
+    the strawman implementation of this repo.
+
+
+System Python on the Mac is generally not supported by IDEs these days.  You
+will need to install Python yourself.
+
+`brew install python3`
+
+[ref](https://code.visualstudio.com/docs/python/python-tutorial#_macos)
+
+You will then need to install the Python extention to VS code. 
+[Click here](https://marketplace.visualstudio.com/items?itemName=ms-python.python) to
+go to the website and follow the directions. 
+
+Next is to install the linter. We are using `pylint` Add
+
+```json
+{
+    "python.linting.pylintEnabled": true,
+}
+```
+
+To your `settings.json` file. 
+
 ## Building and Testing
 
+From the tooling tips above, be sure you are familiar with the Docker Desktop 
+and how to find the logs of your running container. 
+
+### Build Metrics 
+
+#### Linting
+
+We use a stock version of Pylint with the single exception that our line length moves
+from 80 to 88. See `.pylintrc` for details.
+
+Manually run the linter with the command:
+
+`docker compose run web pylint --recursive=y /opt/service`
+
+Output will come directly to your CLI and will be present in the logs of the container
+you can find in Docker Desktop.
+
+#### Code Complexity
 
 
+
+### Testing
+
+`docker compose 
 
 
