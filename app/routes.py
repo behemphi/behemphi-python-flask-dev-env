@@ -42,3 +42,4 @@ def test_get_all_books():
 
 def test_cause_failed_test():
     assert 0 == 1
+
