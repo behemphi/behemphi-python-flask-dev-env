@@ -15,5 +15,5 @@ jobs:
         run: pylint --recursive=y ${{ github.workspace }}
       - name: Tests
         if: success() || failure()
-        run: pytest /opt/service/app/routes.py
+        run: pytest ${{ github.workspace }}/app/routes.py
       - run: echo "This job's status is ${{ job.status }}."
